@@ -1,5 +1,8 @@
-# Created by https://www.toptal.com/developers/gitignore/api/java,macos,maven,intellij+all
-# Edit at https://www.toptal.com/developers/gitignore?templates=java,macos,maven,intellij+all
+# Created by https://www.toptal.com/developers/gitignore/api/java,macos,maven,intellij+all,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=java,macos,maven,intellij+all,dotenv
+
+### dotenv ###
+.env
 
 ### Intellij+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -84,7 +87,7 @@ fabric.properties
 # Ignore everything but code style settings and run configurations
 # that are supposed to be shared within teams.
 
-.idea/*
+.idea/
 
 !.idea/codeStyles
 !.idea/runConfigurations
@@ -167,4 +170,4 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-# End of https://www.toptal.com/developers/gitignore/api/java,macos,maven,intellij+all
+# End of https://www.toptal.com/developers/gitignore/api/java,macos,maven,intellij+all,dotenv
