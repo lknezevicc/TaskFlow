@@ -5,28 +5,28 @@ import javafx.scene.control.Alert;
 public class DefaultAlertFactory implements AlertFactory {
 
     @Override
-    public Alert createErrorAlert(String title, String header, String content) {
-        return createAlert(Alert.AlertType.ERROR, title, header, content);
+    public Alert createErrorAlert(String header, String content) {
+        return createAlert(Alert.AlertType.ERROR, header, content);
     }
 
     @Override
-    public Alert createInfoAlert(String title, String header, String content) {
-        return createAlert(Alert.AlertType.INFORMATION, title, header, content);
+    public Alert createInfoAlert(String header, String content) {
+        return createAlert(Alert.AlertType.INFORMATION, header, content);
     }
 
     @Override
-    public Alert createConfirmationAlert(String title, String header, String content) {
-        return createAlert(Alert.AlertType.CONFIRMATION, title, header, content);
+    public Alert createConfirmationAlert(String header, String content) {
+        return createAlert(Alert.AlertType.CONFIRMATION, header, content);
     }
 
     @Override
-    public Alert createWarningAlert(String title, String header, String content) {
-        return createAlert(Alert.AlertType.WARNING, title, header, content);
+    public Alert createWarningAlert(String header, String content) {
+        return createAlert(Alert.AlertType.WARNING, header, content);
     }
 
-    private Alert createAlert(Alert.AlertType type, String title, String header, String content) {
+    private Alert createAlert(Alert.AlertType type, String header, String content) {
         Alert alert = new Alert(type);
-        alert.setTitle(title);
+        alert.setTitle(type.name());
         alert.setHeaderText(header);
         alert.setContentText(content);
         return alert;

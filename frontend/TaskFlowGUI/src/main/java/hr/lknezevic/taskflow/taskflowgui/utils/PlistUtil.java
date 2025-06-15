@@ -27,10 +27,10 @@ public class PlistUtil {
         }
     }
 
-    public String readValue(String key) {
+    public String readValue(PlistProperty plistProperty) {
         try {
             NSDictionary root = (NSDictionary) PropertyListParser.parse(plistFile);
-            return root.get(key).toString();
+            return root.get(plistProperty.getKey()).toString();
         } catch (Exception e) {
             throw new RuntimeException("Failed to read plist", e);
         }

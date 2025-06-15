@@ -1,0 +1,9 @@
+package hr.lknezevic.taskflow.taskflowgui.dto;
+
+public record UserDto(
+        Long id,
+        String firstName,
+        String lastName,
+        String email,
+        String username
+) {}

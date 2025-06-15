@@ -29,7 +29,6 @@ public class LogInController extends BaseController {
     public void onLogInButtonClick() {
         if (isEmpty(usernameField.getText(), passwordField.getText())) {
             alertFactory.createWarningAlert(
-                    "Bad request",
                     "Username/password are empty",
                     "Please enter a valid username/password"
             ).showAndWait();
@@ -40,11 +39,10 @@ public class LogInController extends BaseController {
 
         authService.authenticate(loginRequest).thenAccept(isSuccess -> {
             if (isSuccess) {
-                Platform.runLater(() -> SceneManager.getInstance().switchScene(SceneType.MAIN));
+                Platform.runLater(() -> SceneManager.switchScene(SceneType.MAIN));
             } else {
                 Platform.runLater(() ->
                     alertFactory.createWarningAlert(
-                            "Bad request",
                             "Login failed",
                             "Please try again"
                     ).showAndWait()

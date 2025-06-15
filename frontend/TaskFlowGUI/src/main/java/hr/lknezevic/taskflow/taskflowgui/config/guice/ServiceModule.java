@@ -3,6 +3,10 @@ package hr.lknezevic.taskflow.taskflowgui.config.guice;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import hr.lknezevic.taskflow.taskflowgui.services.SidebarService;
+import hr.lknezevic.taskflow.taskflowgui.services.TaskService;
+import hr.lknezevic.taskflow.taskflowgui.services.impl.SidebarServiceImpl;
+import hr.lknezevic.taskflow.taskflowgui.services.impl.TaskServiceImpl;
 import hr.lknezevic.taskflow.taskflowgui.utils.PlistUtil;
 import hr.lknezevic.taskflow.taskflowgui.services.AuthService;
 import hr.lknezevic.taskflow.taskflowgui.services.UserService;
@@ -18,8 +22,10 @@ public class ServiceModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(AuthService.class).to(AuthServiceImpl.class);
-        bind(UserService.class).to(UserServiceImpl.class);
+        bind(AuthService.class).to(AuthServiceImpl.class).in(Singleton.class);
+        bind(UserService.class).to(UserServiceImpl.class).in(Singleton.class);
+        bind(SidebarService.class).to(SidebarServiceImpl.class).in(Singleton.class);
+        bind(TaskService.class).to(TaskServiceImpl.class).in(Singleton.class);
     }
 
     @Provides
@@ -38,6 +44,7 @@ public class ServiceModule extends AbstractModule {
     }
 
     @Provides
+    @Singleton
     public JsonUtil provideJsonUtil() {
         return new JsonUtil();
     }

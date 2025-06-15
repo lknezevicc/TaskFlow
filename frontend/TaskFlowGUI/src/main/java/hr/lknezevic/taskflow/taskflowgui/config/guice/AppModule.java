@@ -8,5 +8,6 @@ public class AppModule extends AbstractModule {
     protected void configure() {
         install(new ServiceModule());
         install(new ControllerModule());
+        install(new ViewModelModule());
     }
 }

@@ -6,14 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="768.0" prefWidth="200.0" stylesheets="" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+<VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="768.0" prefWidth="200.0" stylesheets="" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.SidebarController">
     <!-- User Info Section -->
     <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #3498db; -fx-padding: 20px;">
         <ImageView fx:id="userImage" fitHeight="86.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
         </ImageView>
-        <Label fx:id="userName" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="John Doe" />
-      <Label fx:id="userName1" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Email" />
-      <Label fx:id="userName11" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Department" />
+        <Label fx:id="fullName" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="John Doe" />
+        <Label fx:id="email" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Email" />
+        <Label fx:id="userName11" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Department" />
     </VBox>
 
        <!-- Navigation Buttons -->

@@ -1,9 +1,7 @@
 package hr.lknezevic.taskflow.taskflowgui.managers;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
+import com.google.inject.Inject;
 import hr.lknezevic.taskflow.taskflowgui.config.SceneConfig;
-import hr.lknezevic.taskflow.taskflowgui.config.guice.AppModule;
 import hr.lknezevic.taskflow.taskflowgui.config.guice.GuiceFXMLLoader;
 import hr.lknezevic.taskflow.taskflowgui.enums.SceneType;
 import javafx.scene.Scene;
@@ -11,25 +9,25 @@ import javafx.stage.Stage;
 
 public class SceneManager {
     private static SceneManager instance;
+
     private final GuiceFXMLLoader fxmlLoader;
     private Stage stage;
 
-    private SceneManager() {
-        Injector injector = Guice.createInjector(new AppModule());
-        this.fxmlLoader = new GuiceFXMLLoader(injector);
+    @Inject
+    public SceneManager(GuiceFXMLLoader fxmlLoader) {
+        this.fxmlLoader = fxmlLoader;
+        instance = this;
     }
 
     public static SceneManager getInstance() {
         if (instance == null) {
-            instance = new SceneManager();
+            throw new IllegalStateException("SceneManager not initialized via DI.");
         }
-
         return instance;
     }
 
-    public void switchScene(SceneType sceneType) {
-        stage.setScene(loadScene(sceneType));
-        stage.show();
+    public static void switchScene(SceneType sceneType) {
+        getInstance().switchTo(sceneType);
     }
 
     public void init(Stage stage) {
@@ -38,12 +36,15 @@ public class SceneManager {
         this.stage.setTitle("TaskFlow");
     }
 
+    private void switchTo(SceneType sceneType) {
+        stage.setScene(loadScene(sceneType));
+        stage.show();
+    }
+
     private Scene loadScene(SceneType sceneType) {
         String scenePath = SceneConfig.getScenePath(sceneType);
         Scene scene = new Scene(fxmlLoader.load(getClass().getResource(scenePath)));
-        String cssFile = sceneType.getCssPath();
-        scene.getStylesheets().add(cssFile);
-        
+        scene.getStylesheets().add(sceneType.getCssPath());
         return scene;
     }
 }
