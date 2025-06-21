@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.AdministrationController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <VBox spacing="20" styleClass="preferences-container">
+
+            <Label text="Preferences" styleClass="title-label" />
+
+            <!-- Language Selection -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Language:" minWidth="120" />
+                <ComboBox fx:id="languageComboBox" prefWidth="200">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Hrvatski" />
+                            <String fx:value="English" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+
+            <!-- Theme Selection -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Theme:" minWidth="120" />
+                <ToggleButton fx:id="themeToggleGroup">
+                    <RadioButton text="Light" />
+                    <RadioButton text="Dark" />
+                </ToggleButton>
+            </HBox>
+
+            <!-- Auto-switch Light/Dark mode -->
+            <CheckBox fx:id="autoSwitchCheckbox" text="Auto switch Light/Dark mode based on system time" />
+
+            <!-- Check for updates -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Application Version:" minWidth="120" />
+                <Label fx:id="versionLabel" text="v1.0.0" />
+                <Button fx:id="checkUpdateButton" text="Check for updates" />
+            </HBox>
+
+            <!-- Optional additional settings -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Font Size:" minWidth="120" />
+                <Slider fx:id="fontSizeSlider" min="10" max="24" value="14" prefWidth="200" />
+            </HBox>
+
+            <!-- Reset Button -->
+            <Button fx:id="resetPreferencesButton" text="Reset to Defaults" maxWidth="150" />
+
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Legal note -->
+            <Label text="© 2025 TaskFlow. All rights reserved." styleClass="legal-note" maxWidth="Infinity" alignment="CENTER" />
+        </VBox>
+    </center>
+</BorderPane>
+

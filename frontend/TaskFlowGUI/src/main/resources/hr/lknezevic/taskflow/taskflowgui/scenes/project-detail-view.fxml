@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.TasksController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <VBox styleClass="project-view-container">
+
+            <!-- Naslov projekta -->
+            <Label fx:id="titleLabel" text="Naslov" styleClass="title-label" />
+
+            <!-- Osnovni podaci u gridu -->
+            <GridPane hgap="15" vgap="15">
+                <columnConstraints>
+                    <!-- Prva kolona (oznake) zauzima minimalni prostor -->
+                    <ColumnConstraints minWidth="90" prefWidth="150" hgrow="NEVER" />
+                    <!-- Druga kolona (vrijednosti) zauzima sav preostali prostor -->
+                    <ColumnConstraints minWidth="200" prefWidth="500" hgrow="ALWAYS" />
+                </columnConstraints>
+                <rowConstraints>
+                    <!-- Svaki redak može rasti po potrebi -->
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <!-- Zadnji red za progress bar neka zauzme više visine ako treba -->
+                    <RowConstraints vgrow="ALWAYS" />
+                </rowConstraints>
+
+                <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-size: 14px;" />
+                <Label fx:id="idLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" style="-fx-font-size: 14px;" />
+
+                <Label text="Opis projekta:" styleClass="section-header" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <Label fx:id="descriptionTextArea" wrapText="true" GridPane.rowIndex="1" GridPane.columnIndex="1" prefHeight="50" style="-fx-font-size: 14px;" />
+
+                <Label text="Status:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-size: 14px;" />
+                <Label fx:id="statusLabel" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-font-size: 14px;" />
+
+                <Label text="Deadline:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-size: 14px;" />
+                <Label fx:id="deadlineLabel" GridPane.rowIndex="3" GridPane.columnIndex="1" style="-fx-font-size: 14px;" />
+
+                <Label text="Is past due:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-size: 14px;" />
+                <Label fx:id="pastDueLabel" GridPane.rowIndex="4" GridPane.columnIndex="1" style="-fx-font-size: 14px;" />
+
+                <Label text="Number of Tasks:" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-font-size: 14px;" />
+                <Label fx:id="taskCountLabel" GridPane.rowIndex="5" GridPane.columnIndex="1" style="-fx-font-size: 14px;" />
+
+                <Label text="Active users on project:" GridPane.rowIndex="6" GridPane.columnIndex="0" style="-fx-font-size: 14px;" />
+                <Label fx:id="userCountLabel" GridPane.rowIndex="6" GridPane.columnIndex="1" style="-fx-font-size: 14px;" />
+
+                <!-- HBox za centrirani ProgressBar i labelu s postotkom -->
+                <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                    <Label text="Project completion" />
+                    <ProgressBar fx:id="progressBar" prefWidth="400" prefHeight="30" />
+                    <Label fx:id="progressLabel" text="0%" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                </HBox>
+            </GridPane>
+
+            <!-- Lista zadataka -->
+            <VBox spacing="8" maxHeight="320" >
+                <Label styleClass="section-header" style="-fx-font-size: 16px;" text="Zadaci u projektu:" />
+                <ListView fx:id="taskListView" prefHeight="300" style="-fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- Statistika: bar chart statusa -->
+            <VBox spacing="15">
+                <Label styleClass="section-header" style="-fx-font-size: 16px;" text="Pregled statusa zadataka:" />
+                <BarChart fx:id="statusChart" prefHeight="350" prefWidth="700" title="Status zadataka">
+                    <xAxis>
+                        <CategoryAxis label="Status" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Broj zadataka" />
+                    </yAxis>
+                </BarChart>
+            </VBox>
+
+            <!-- Gumb za generiranje PDF-a -->
+            <Button fx:id="generatePdfButton" maxWidth="250" prefHeight="40" text="Generiraj PDF izvještaj" style="-fx-font-size: 16px;" />
+
+        </VBox>
+    </center>
+</BorderPane>

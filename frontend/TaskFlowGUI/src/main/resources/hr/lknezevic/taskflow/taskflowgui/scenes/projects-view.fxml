@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.TasksController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <VBox fx:id="projectViewContainer" spacing="20.0">
+
+            <!-- Naslov -->
+            <Label text="Projects"
+                   styleClass="section-title"/>
+
+            <!-- Filter & Search -->
+            <HBox spacing="10.0">
+                <TextField fx:id="searchField"
+                           promptText="Search by name or ID"
+                           HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="statusFilterComboBox"
+                          prefWidth="150"
+                          promptText="Filter by Status"/>
+                <Button text="Add Project"
+                        fx:id="addProjectButton"
+                        styleClass="primary-button"/>
+            </HBox>
+
+            <!-- Lista projekata -->
+            <ListView fx:id="projectListView"
+                      prefHeight="600.0"
+                      VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </center>
+</BorderPane>

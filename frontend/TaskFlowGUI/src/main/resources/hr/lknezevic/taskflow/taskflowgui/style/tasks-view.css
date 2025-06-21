@@ -1,0 +1,94 @@
+/* === ROOT STILOVI === */
+#mainContainer {
+    -fx-background-color: #f5f7fa;
+    -fx-text-fill: #1e1e1e;
+}
+
+/* === LABELS === */
+.label {
+    -fx-text-fill: #1e1e1e;
+    -fx-font-weight: 600;
+}
+
+/* === TEXTFIELDS === */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cfd8dc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+}
+
+/* === BUTTONS === */
+.button {
+    -fx-background-color: #1976d2;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 6 16;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #1565c0;
+}
+
+.button:pressed {
+    -fx-background-color: #0d47a1;
+}
+
+/* === COMBOBOXES === */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #cfd8dc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 4 10;
+}
+
+/* === LISTVIEW === */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.list-cell {
+    -fx-padding: 10;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.list-cell:hover {
+    -fx-background-color: #e3f2fd;
+}
+
+.list-cell:selected {
+    -fx-background-color: #bbdefb;
+    -fx-text-fill: black;
+}
+
+/* === TAMNA TEMA (PRIPREMA, KASNIJE DODATI KLASU NA ROOT) === */
+.dark {
+    -fx-background-color: #121212;
+    -fx-text-fill: #ffffff;
+}
+
+.dark .label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.dark .text-field,
+.dark .combo-box,
+.dark .list-view {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #333333;
+    -fx-text-fill: #eeeeee;
+}
+
+.dark .button {
+    -fx-background-color: #0d47a1;
+    -fx-text-fill: white;
+}

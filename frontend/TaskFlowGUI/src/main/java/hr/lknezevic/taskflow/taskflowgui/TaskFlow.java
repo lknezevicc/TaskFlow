@@ -10,6 +10,7 @@ import hr.lknezevic.taskflow.taskflowgui.utils.XmlUtil;
 import jakarta.xml.bind.JAXBException;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import soap.countryinfo.CountryInfoService;
 
 public class TaskFlow extends Application {
     @Override
@@ -30,10 +31,19 @@ public class TaskFlow extends Application {
         // SceneManager je singleton, ali sada se injecta pa static setuje sam sebe
         SceneManager sceneManager = injector.getInstance(SceneManager.class);
         sceneManager.init(stage);
-        SceneManager.switchScene(SceneType.DASHBOARD);
+        SceneManager.switchScene(SceneType.TASK_DETAIL);
+
+        soap.countryinfo.CountryInfoServiceSoapType soap = new CountryInfoService().getCountryInfoServiceSoap();
+        String code = soap.countryIntPhoneCode("HR");
+        System.out.println("Pozivni broj za HR je: +" + code);
     }
 
     public static void main(String[] args) {
         launch();
+    }
+
+    @Override
+    public void stop() {
+
     }
 }

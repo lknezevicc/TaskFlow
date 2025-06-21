@@ -1,0 +1,96 @@
+/* Glavni kontejner */
+.admin-container {
+    -fx-padding: 20;
+    -fx-background-color: #f5f7fa; /* svijetla pozadina */
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* HBox za filter i sortiranje */
+.admin-container > HBox {
+    -fx-background-color: white;
+    -fx-padding: 15 20 15 20;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-color: #d1d9e6;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);
+}
+
+/* TextField i ComboBox stilski */
+.admin-container TextField,
+.admin-container ComboBox {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #bbb;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 14px;
+    -fx-pref-height: 32;
+    -fx-background-color: white;
+    -fx-cursor: text;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+    -fx-focus-color: #3a7bd5;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Kad su u fokusu */
+.admin-container TextField:focused,
+.admin-container ComboBox:focused {
+    -fx-border-color: #3a7bd5;
+    -fx-effect: dropshadow(gaussian, rgba(58,123,213,0.5), 4, 0, 0, 2);
+}
+
+/* ListView styling */
+.admin-container ListView {
+    -fx-background-color: white;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-color: #d1d9e6;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.07), 8, 0, 0, 3);
+    -fx-padding: 10;
+}
+
+/* Gumb za dodavanje i export */
+.primary-button,
+.admin-container Button {
+    -fx-background-color: #3a7bd5;
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-font-size: 15px;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 8 20 8 20;
+    -fx-border: none;
+    -fx-effect: dropshadow(gaussian, rgba(58,123,213,0.7), 6, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.primary-button:hover,
+.admin-container Button:hover {
+    -fx-background-color: #2c5aa0;
+    -fx-effect: dropshadow(gaussian, rgba(44,90,160,0.9), 8, 0, 0, 4);
+}
+
+/* Prompt text za TextField i ComboBox */
+.admin-container TextField:prompt-text,
+.admin-container ComboBox .text {
+    -fx-fill: #999;
+}
+
+/* Scrollbar styling za ListView */
+.admin-container ListView > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 2 0 0;
+}
+
+.admin-container ListView > .scroll-bar:vertical .thumb {
+    -fx-background-color: #3a7bd5;
+    -fx-background-insets: 2;
+    -fx-background-radius: 6;
+}
+
+/* Placeholder text za praznu ListView */
+.admin-container ListView .empty {
+    -fx-font-style: italic;
+    -fx-text-fill: #aaa;
+}

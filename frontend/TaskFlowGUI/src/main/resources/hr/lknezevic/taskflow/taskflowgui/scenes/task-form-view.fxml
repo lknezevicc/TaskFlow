@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.TasksController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <VBox>
+            <Label text="Title:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <TextField fx:id="titleField" promptText="Enter task title" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <!-- Description -->
+            <Label text="Description:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <TextArea fx:id="descriptionArea" promptText="Enter description" prefRowCount="4" wrapText="true"
+                      GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <!-- Due Date -->
+            <Label text="Due Date:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <DatePicker fx:id="dueDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+            <!-- Status -->
+            <Label text="Status:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+            <ComboBox fx:id="statusComboBox" promptText="Select status" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+            <!-- Priority -->
+            <Label text="Priority:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+            <ComboBox fx:id="priorityComboBox" promptText="Select priority" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+            <!-- Assigned To -->
+            <Label text="Assigned To:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+            <ComboBox fx:id="assignedToComboBox" promptText="Assign to user" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+            <!-- Project -->
+            <Label text="Project:" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+            <ComboBox fx:id="projectComboBox" promptText="Select project" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+
+            <!-- Time Spent -->
+            <Label text="Time Spent:" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+            <TextField fx:id="timeSpentField" promptText="e.g. 01:30 (hh:mm)" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+
+            <!-- Submit -->
+            <Button fx:id="submitTaskButton" text="Save Task"
+                    GridPane.columnSpan="2" GridPane.rowIndex="8"
+                    maxWidth="200"
+                    alignment="CENTER"
+                    styleClass="primary-button" />
+        </VBox>
+    </center>
+</BorderPane>

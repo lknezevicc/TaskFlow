@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.TasksController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <GridPane fx:id="projectFormGrid" alignment="CENTER" hgap="20" vgap="15">
+
+            <!-- Project Name -->
+            <Label text="Project Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <TextField fx:id="projectNameField" promptText="Enter project name" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <!-- Description -->
+            <Label text="Description:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <TextArea fx:id="descriptionArea" promptText="Enter description" prefRowCount="4" wrapText="true"
+                      GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <!-- Start Date -->
+            <Label text="Start Date:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <DatePicker fx:id="startDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+            <!-- End Date -->
+            <Label text="End Date:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+            <DatePicker fx:id="endDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+            <!-- Status -->
+            <Label text="Status:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+            <ComboBox fx:id="statusComboBox" promptText="Select status" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Planned" />
+                        <String fx:value="In Progress" />
+                        <String fx:value="Completed" />
+                        <String fx:value="On Hold" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Project Manager -->
+            <Label text="Manager:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+            <ComboBox fx:id="managerComboBox" promptText="Assign manager" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+            <!-- Submit Button -->
+            <Button fx:id="submitProjectButton" text="Save Project"
+                    GridPane.columnSpan="2" GridPane.rowIndex="6"
+                    maxWidth="200"
+                    alignment="CENTER"
+                    styleClass="primary-button" />
+        </GridPane>
+    </center>
+</BorderPane>

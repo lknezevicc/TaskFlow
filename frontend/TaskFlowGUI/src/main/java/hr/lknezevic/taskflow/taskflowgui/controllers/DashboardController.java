@@ -3,6 +3,7 @@ package hr.lknezevic.taskflow.taskflowgui.controllers;
 import com.google.inject.Inject;
 import hr.lknezevic.taskflow.taskflowgui.components.TaskListCell;
 import hr.lknezevic.taskflow.taskflowgui.enums.TaskStatus;
+import hr.lknezevic.taskflow.taskflowgui.factory.alert.AlertFactory;
 import hr.lknezevic.taskflow.taskflowgui.observable.TaskFx;
 import hr.lknezevic.taskflow.taskflowgui.viewmodel.TaskViewModel;
 import hr.lknezevic.taskflow.taskflowgui.viewmodel.UserViewModel;
@@ -21,7 +22,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.util.*;
 
-public class DashboardController implements Initializable {
+public class DashboardController extends BaseController implements Initializable {
     private final UserViewModel userViewModel;
     private final TaskViewModel taskViewModel;
 
@@ -41,13 +42,15 @@ public class DashboardController implements Initializable {
     private PieChart taskStatusPieChart;
 
     @Inject
-    public DashboardController(UserViewModel userViewModel, TaskViewModel taskViewModel) {
+    public DashboardController(AlertFactory alertFactory, UserViewModel userViewModel, TaskViewModel taskViewModel) {
+        super(alertFactory);
         this.userViewModel = userViewModel;
         this.taskViewModel = taskViewModel;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        super.i18n(resources, welcomeLabel, dateLabel);
         configurePieChart();
 
         userViewModel.loadCurrentUser(user -> Platform.runLater(() ->

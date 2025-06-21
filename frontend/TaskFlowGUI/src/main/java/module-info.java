@@ -12,12 +12,17 @@ module hr.lknezevic.taskflow.taskflowgui {
     requires org.mapstruct;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires jakarta.xml.ws;
+    requires jakarta.inject;
 
     opens hr.lknezevic.taskflow.taskflowgui to javafx.fxml, com.google.guice;
     opens hr.lknezevic.taskflow.taskflowgui.controllers to javafx.fxml;
     opens hr.lknezevic.taskflow.taskflowgui.services.impl to com.google.guice;
     opens hr.lknezevic.taskflow.taskflowgui.factory.alert to com.google.guice;
     opens hr.lknezevic.taskflow.taskflowgui.model to jakarta.xml.bind;
+
+    opens soap.countryinfo to com.sun.xml.bind;
+    exports soap.countryinfo to com.sun.xml.ws;
 
     exports hr.lknezevic.taskflow.taskflowgui.controllers;
     exports hr.lknezevic.taskflow.taskflowgui.enums;
@@ -32,5 +37,6 @@ module hr.lknezevic.taskflow.taskflowgui {
     exports hr.lknezevic.taskflow.taskflowgui to com.google.guice, javafx.graphics;
     exports hr.lknezevic.taskflow.taskflowgui.services.impl to com.google.guice;
     exports hr.lknezevic.taskflow.taskflowgui.config.guice to com.google.guice;
-    exports  hr.lknezevic.taskflow.taskflowgui.managers to com.google.guice;
+    exports hr.lknezevic.taskflow.taskflowgui.managers to com.google.guice;
+
 }

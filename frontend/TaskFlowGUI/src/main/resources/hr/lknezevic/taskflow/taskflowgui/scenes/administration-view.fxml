@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import java.lang.*?>
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.AdministrationController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <VBox spacing="10" alignment="CENTER" styleClass="admin-container">
+
+            <!-- Filter i sortiranje -->
+            <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 10;">
+                <!-- Search -->
+                <TextField fx:id="searchField" promptText="Search by name or ID" prefWidth="250" />
+
+                <!-- Filter by Role -->
+                <ComboBox fx:id="roleFilterComboBox" promptText="Filter by role" prefWidth="150">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="All" />
+                            <String fx:value="Admin" />
+                            <String fx:value="User" />
+                            <String fx:value="Guest" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <!-- Sort by -->
+                <ComboBox fx:id="sortComboBox" promptText="Sort by" prefWidth="150">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Name (A-Z)" />
+                            <String fx:value="Name (Z-A)" />
+                            <String fx:value="ID (Ascending)" />
+                            <String fx:value="ID (Descending)" />
+                            <String fx:value="Date Created (Newest)" />
+                            <String fx:value="Date Created (Oldest)" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <!-- Export button -->
+                <Button fx:id="exportButton" text="Export Users" prefWidth="120" />
+            </HBox>
+
+            <!-- Lista korisnika -->
+            <ListView fx:id="userListView" prefHeight="800" />
+
+            <!-- Dodaj korisnika gumb ispod -->
+            <Button fx:id="addUserButton" text="Add New User" maxWidth="200" styleClass="primary-button" />
+
+        </VBox>
+    </center>
+</BorderPane>

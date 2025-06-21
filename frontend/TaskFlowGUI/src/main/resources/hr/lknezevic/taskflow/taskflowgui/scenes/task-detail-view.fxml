@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.TasksController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <BorderPane>
+            <top>
+                <VBox spacing="15" styleClass="task-header-box">
+                    <Label fx:id="taskTitleLabel" styleClass="task-title" text="Task Title" />
+                    <Label fx:id="taskDescriptionLabel" wrapText="true" styleClass="task-description" text="Task Description..." />
+
+                    <GridPane hgap="20" vgap="10">
+                        <Label text="Due Date:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                        <Label fx:id="dueDateLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+                        <Label text="Created:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                        <Label fx:id="createdAtLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                        <Label text="Updated:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                        <Label fx:id="updatedAtLabel" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+                        <Label text="Status:" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                        <Label fx:id="statusLabel" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                        <Label text="Priority:" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                        <Label fx:id="priorityLabel" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+
+                        <Label text="Assigned To:" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                        <Label fx:id="assignedToLabel" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+                        <Label text="Project:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                        <Label fx:id="projectLabel" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+                        <Label text="Time Spent:" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                        <Label fx:id="timeSpentLabel" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+                    </GridPane>
+                </VBox>
+            </top>
+            <center>
+                <TabPane fx:id="taskDetailsTabPane" tabClosingPolicy="UNAVAILABLE">
+                    <!-- Comments Tab -->
+                    <Tab text="Comments">
+                        <VBox spacing="10">
+                            <ListView fx:id="commentsListView" prefHeight="300" />
+                            <TextArea fx:id="newCommentArea" promptText="Write a comment..." wrapText="true" prefRowCount="3"/>
+                            <Button fx:id="addCommentButton" text="Add Comment" maxWidth="150" styleClass="primary-button" />
+                        </VBox>
+                    </Tab>
+
+                    <!-- Time Logs Tab -->
+                    <Tab text="Time Logs">
+                        <VBox spacing="10">
+                            <ListView fx:id="timeLogsListView" prefHeight="300" />
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Log Time (hh:mm):" />
+                                <TextField fx:id="logTimeField" promptText="e.g. 02:30" prefWidth="100" />
+                                <Button fx:id="logTimeButton" text="Add Time Log" styleClass="primary-button" />
+                            </HBox>
+                            <Label fx:id="totalTimeSpentLabel" text="Total Time: 00:00" styleClass="info-label" />
+                        </VBox>
+                    </Tab>
+                </TabPane>
+            </center>
+        </BorderPane>
+    </center>
+</BorderPane>

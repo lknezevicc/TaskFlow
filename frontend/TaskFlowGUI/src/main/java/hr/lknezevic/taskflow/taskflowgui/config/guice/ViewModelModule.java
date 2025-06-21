@@ -3,10 +3,14 @@ package hr.lknezevic.taskflow.taskflowgui.config.guice;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import hr.lknezevic.taskflow.taskflowgui.managers.UdpClientManager;
 import hr.lknezevic.taskflow.taskflowgui.mappers.*;
 import hr.lknezevic.taskflow.taskflowgui.viewmodel.TaskViewModel;
 import hr.lknezevic.taskflow.taskflowgui.viewmodel.UserViewModel;
 import org.mapstruct.factory.Mappers;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ViewModelModule extends AbstractModule {
 
@@ -14,6 +18,9 @@ public class ViewModelModule extends AbstractModule {
     protected void configure() {
         bind(UserViewModel.class);
         bind(TaskViewModel.class);
+
+        bind(ExecutorService.class).toInstance(Executors.newFixedThreadPool(4));
+        bind(UdpClientManager.class).in(Singleton.class);
     }
 
     @Provides

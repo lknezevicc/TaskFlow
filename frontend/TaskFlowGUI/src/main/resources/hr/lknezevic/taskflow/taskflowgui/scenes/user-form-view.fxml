@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.UserFormController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+    <center>
+        <GridPane fx:id="userFormGrid" alignment="CENTER" hgap="20" vgap="15">
+
+            <!-- Labels on the left -->
+            <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <TextField fx:id="firstNameField" promptText="Enter first name" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <Label text="Last Name:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <TextField fx:id="lastNameField" promptText="Enter last name" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <TextField fx:id="emailField" promptText="Enter email address" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+            <Label text="Username:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+            <TextField fx:id="usernameField" promptText="Choose a username" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+            <Label text="Role:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+            <ComboBox fx:id="roleComboBox" promptText="Select role" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Admin"/>
+                        <String fx:value="User"/>
+                        <String fx:value="Guest"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Label text="Profile Picture:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+            <VBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                <ImageView fx:id="profileImageView" fitHeight="120" fitWidth="120" preserveRatio="true" style="-fx-border-color: #cccccc; -fx-border-radius: 10;" />
+                <Button fx:id="uploadImageButton" text="Choose Image" />
+            </VBox>
+
+            <!-- Submit Button -->
+            <Button fx:id="submitButton" text="Save User"
+                    GridPane.columnSpan="2" GridPane.rowIndex="6"
+                    maxWidth="200"
+                    alignment="CENTER"
+                    styleClass="primary-button" />
+        </GridPane>
+    </center>
+</BorderPane>

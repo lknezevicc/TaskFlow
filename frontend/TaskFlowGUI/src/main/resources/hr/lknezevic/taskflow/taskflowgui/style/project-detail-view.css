@@ -1,0 +1,92 @@
+/* Container za cijelu sredinu */
+.project-view-container {
+    -fx-padding: 20;
+    -fx-background-color: #f9f9f9;
+    -fx-spacing: 25;
+    -fx-alignment: top_center;
+}
+
+/* Naslov projekta */
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 10 0 20 0;
+}
+
+/* Sekcijski naslovi */
+.section-header {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495e;
+    -fx-padding: 10 0 10 0;
+    -fx-border-color: #34495e;
+    -fx-border-width: 0 0 2 0;
+}
+
+/* GridPane label-e (oznake lijevo) */
+.grid-pane > Label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Specifične label-e u gridu (vrijednosti) */
+.grid-pane > Label[id$="Label"] {
+    -fx-font-weight: normal;
+    -fx-text-fill: #3d566e;
+}
+
+/* ProgressBar u HBox-u centrirano */
+HBox {
+    -fx-alignment: center;
+}
+
+/* Stil ProgressBar-a */
+.progress-bar {
+    -fx-accent: #3498db; /* plava boja */
+    -fx-background-insets: 0;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-pref-height: 30px;
+}
+
+/* Labela pokraj progressbara */
+#progressLabel {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2980b9;
+}
+
+/* ListView zadataka */
+#taskListView {
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: white;
+}
+
+/* BarChart stil */
+.chart-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Button za PDF */
+#generatePdfButton {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+#generatePdfButton:hover {
+    -fx-background-color: #3498db;
+}
+
+/* Ostali sitni popravci */
+Label {
+    -fx-padding: 2 0 2 0;
+}

@@ -22,8 +22,6 @@
         <Button mnemonicParsing="false" styleClass="button" text="Tasks" />
         <Button mnemonicParsing="false" styleClass="button" text="Projects" />
         <Button mnemonicParsing="false" styleClass="button" text="Administrative" />
-        <Button mnemonicParsing="false" styleClass="button" text="Notifications" />
-        <Button mnemonicParsing="false" styleClass="button" text="Requests" />
       <opaqueInsets>
          <Insets />
       </opaqueInsets>

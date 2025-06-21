@@ -4,6 +4,11 @@ import hr.lknezevic.taskflow.taskflowgui.enums.SceneType;
 import hr.lknezevic.taskflow.taskflowgui.factory.alert.AlertFactory;
 import hr.lknezevic.taskflow.taskflowgui.managers.SceneManager;
 import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.control.Labeled;
+import javafx.scene.control.TextInputControl;
+
+import java.util.ResourceBundle;
 
 public abstract class BaseController {
     protected final AlertFactory alertFactory;
@@ -20,6 +25,19 @@ public abstract class BaseController {
     }
 
     protected void switchScene(SceneType sceneType) {
-        Platform.runLater(() -> SceneManager.getInstance().switchScene(sceneType));
+        Platform.runLater(() -> SceneManager.switchScene(sceneType));
+    }
+
+    protected void i18n(ResourceBundle i18n, Node... nodes) {
+        for (Node node : nodes) {
+            String key = node.getUserData().toString();
+            String translation = i18n.getString(key);
+
+            if (node instanceof Labeled labeled) {
+                labeled.setText(translation);
+            } else if (node instanceof TextInputControl) {
+            }
+
+        }
     }
 }
