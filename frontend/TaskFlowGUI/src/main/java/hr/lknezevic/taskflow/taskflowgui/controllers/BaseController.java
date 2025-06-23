@@ -5,6 +5,8 @@ import hr.lknezevic.taskflow.taskflowgui.factory.alert.AlertFactory;
 import hr.lknezevic.taskflow.taskflowgui.managers.SceneManager;
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TextInputControl;
 
@@ -17,10 +19,13 @@ public abstract class BaseController {
         this.alertFactory = alertFactory;
     }
 
-    protected boolean isEmpty(String... fields) {
-        for (String field : fields) {
-            if (field == null || field.trim().isEmpty()) return true;
+    protected boolean isEmpty(TextInputControl... fields) {
+        for (TextInputControl field : fields) {
+            if (field.getText() == null || field.getText().trim().isEmpty()) {
+                return true;
+            }
         }
+
         return false;
     }
 
@@ -28,16 +33,24 @@ public abstract class BaseController {
         Platform.runLater(() -> SceneManager.switchScene(sceneType));
     }
 
-    protected void i18n(ResourceBundle i18n, Node... nodes) {
-        for (Node node : nodes) {
-            String key = node.getUserData().toString();
-            String translation = i18n.getString(key);
+    protected void i18n(ResourceBundle bundle, Parent root) {
+        for (Node node : root.lookupAll("*")) {
+            Object key = node.getUserData();
+            if (key == null) continue;
 
+            String translation = bundle.getString(key.toString());
             if (node instanceof Labeled labeled) {
                 labeled.setText(translation);
-            } else if (node instanceof TextInputControl) {
+            } else if (node instanceof TextInputControl input) {
+                input.setPromptText(translation);
+            } else if (node instanceof ComboBox<?> comboBox) {
+                comboBox.setPromptText(translation);
             }
-
         }
+    }
+
+    protected String capitalize(String s) {
+        if (s == null || s.isEmpty()) return s;
+        return s.substring(0,1).toUpperCase() + s.substring(1).toLowerCase();
     }
 }

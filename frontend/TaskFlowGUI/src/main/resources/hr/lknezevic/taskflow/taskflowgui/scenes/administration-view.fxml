@@ -38,8 +38,6 @@
                             <String fx:value="Name (Z-A)" />
                             <String fx:value="ID (Ascending)" />
                             <String fx:value="ID (Descending)" />
-                            <String fx:value="Date Created (Newest)" />
-                            <String fx:value="Date Created (Oldest)" />
                         </FXCollections>
                     </items>
                 </ComboBox>

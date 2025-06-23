@@ -3,6 +3,7 @@ package hr.lknezevic.taskflow.taskflowgui.managers;
 import com.google.inject.Inject;
 import hr.lknezevic.taskflow.taskflowgui.config.SceneConfig;
 import hr.lknezevic.taskflow.taskflowgui.config.guice.GuiceFXMLLoader;
+import hr.lknezevic.taskflow.taskflowgui.enums.CSSTheme;
 import hr.lknezevic.taskflow.taskflowgui.enums.SceneType;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -12,6 +13,7 @@ public class SceneManager {
 
     private final GuiceFXMLLoader fxmlLoader;
     private Stage stage;
+    private CSSTheme themeType;
 
     @Inject
     public SceneManager(GuiceFXMLLoader fxmlLoader) {
@@ -44,7 +46,9 @@ public class SceneManager {
     private Scene loadScene(SceneType sceneType) {
         String scenePath = SceneConfig.getScenePath(sceneType);
         Scene scene = new Scene(fxmlLoader.load(getClass().getResource(scenePath)));
-        scene.getStylesheets().add(sceneType.getCssPath());
+        scene.getStylesheets().add(CSSTheme.CORE.getPath());
+        scene.getStylesheets().add(CSSTheme.LIGHT.getPath());
+
         return scene;
     }
 }

@@ -7,8 +7,8 @@ import hr.lknezevic.taskflow.taskflowgui.factory.alert.AlertFactory;
 import hr.lknezevic.taskflow.taskflowgui.observable.TaskFx;
 import hr.lknezevic.taskflow.taskflowgui.viewmodel.TaskViewModel;
 import hr.lknezevic.taskflow.taskflowgui.viewmodel.UserViewModel;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,26 +20,20 @@ import javafx.scene.control.ListView;
 
 import java.net.URL;
 import java.text.DateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class DashboardController extends BaseController implements Initializable {
+    @FXML private Label welcomeLabel;
+    @FXML private Label dateLabel;
+    @FXML private ListView<TaskFx> userTasksListView;
+    @FXML private ComboBox<String> projectComboBox;
+    @FXML private PieChart taskStatusPieChart;
+
     private final UserViewModel userViewModel;
     private final TaskViewModel taskViewModel;
-
-    @FXML
-    private Label welcomeLabel;
-
-    @FXML
-    private Label dateLabel;
-
-    @FXML
-    private ListView<TaskFx> userTasksListView;
-
-    @FXML
-    private ComboBox<String> projectComboBox;
-
-    @FXML
-    private PieChart taskStatusPieChart;
 
     @Inject
     public DashboardController(AlertFactory alertFactory, UserViewModel userViewModel, TaskViewModel taskViewModel) {
@@ -50,21 +44,23 @@ public class DashboardController extends BaseController implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        super.i18n(resources, welcomeLabel, dateLabel);
+        super.i18n(resources, welcomeLabel);
         configurePieChart();
 
-        userViewModel.loadCurrentUser(user -> Platform.runLater(() ->
-                welcomeLabel.setText("Welcome back " + user.getFirstName()))
-        );
+        taskViewModel.loadTasksAsyncSimple();
+
+        userViewModel.loadCurrentUser();
+        userViewModel.currentUserProperty().addListener((obs, oldUser, newUser) -> {
+            welcomeLabel.setText("Welcome back, " + newUser.getUsername());
+        });
 
         dateLabel.setText(DateFormat.getDateInstance().format(new Date()));
         userTasksListView.setCellFactory(listView -> new TaskListCell());
+        userTasksListView.setItems(taskViewModel.getAllTasks());
 
-        taskViewModel.loadTasksSimple(tasks -> Platform.runLater(() -> {
-            userTasksListView.setItems(tasks);
-            taskStatusPieChart.setData(calculatePieChartData(tasks));
-        }));
-
+        taskViewModel.getAllTasks().addListener((ListChangeListener<TaskFx>) change ->
+            taskStatusPieChart.setData(calculatePieChartData(taskViewModel.getAllTasks()))
+        );
     }
 
     private ObservableList<PieChart.Data> calculatePieChartData(ObservableList<TaskFx> userTasks) {
@@ -83,9 +79,6 @@ public class DashboardController extends BaseController implements Initializable
         for (Map.Entry<TaskStatus, Integer> entry : statusCount.entrySet()) {
             pieChartData.add(new PieChart.Data(entry.getKey().name(), entry.getValue().doubleValue()));
         }
-
-        Locale locale = new Locale("hr", "HR");
-        System.out.println("Država (na engleskom): " + locale.getDisplayCountry(Locale.ENGLISH));
 
         return pieChartData;
     }

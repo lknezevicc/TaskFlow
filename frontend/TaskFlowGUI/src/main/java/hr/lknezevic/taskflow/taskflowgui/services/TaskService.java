@@ -7,4 +7,6 @@ import java.util.concurrent.CompletableFuture;
 
 public interface TaskService {
     CompletableFuture<List<TaskDto>> findAllTasks();
+    CompletableFuture<List<TaskDto>> findTasksByProjectId(Long projectId);
+    void saveToTemp(TaskDto taskDto);
 }

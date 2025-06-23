@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -9,35 +10,55 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.TasksController" fx:id="mainContainer">
-    <left>
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.TasksController">
+   <stylesheets>
+      <URL value="@../style/core.css" />
+      <URL value="@../style/light-theme.css" />
+   </stylesheets>
+
+   <padding>
+      <Insets bottom="5" left="5" right="5" top="5" />
+   </padding>
+   <left>
         <fx:include source="sidebar.fxml" />
-    </left>
-    <center>
-    </center>
+   </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="118.0" prefWidth="824.0">
-               <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Label" />
-                        <TextField />
-                        <Button mnemonicParsing="false" text="Button" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <ComboBox prefWidth="150.0" />
-                        <ComboBox prefWidth="150.0" />
-                        <ComboBox prefWidth="150.0" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <ListView prefHeight="200.0" prefWidth="200.0" />
-         </children>
+      <VBox fx:id="tasks" alignment="CENTER" styleClass="center-container" BorderPane.alignment="CENTER">
+         <Label styleClass="title-label" text="Tasks" userData="tasks.titleLabel">
+            <VBox.margin>
+               <Insets top="20.0" />
+            </VBox.margin>
+         </Label>
+         <HBox alignment="CENTER_LEFT" prefHeight="70.0">
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <Label text="Search task:" userData="tasks.search-label">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </Label>
+               <TextField fx:id="searchTextField" prefWidth="500.0" promptText="Enter task name or description" userData="tasks.searchField">
+                  <HBox.margin>
+                     <Insets left="10.0" right="20.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <Label text="Filter by:" userData="tasks.filter">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </Label>
+               <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="200.0">
+                  <Label text="Status" userData="tasks.statusFilter" />
+                  <ComboBox fx:id="statusComboBox" prefWidth="150.0" />
+               </VBox>
+               <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="200.0">
+                  <Label text="Priority" userData="tasks.priorityFilter" />
+                  <ComboBox fx:id="priorityComboBox" prefWidth="150.0" />
+               </VBox>
+            </HBox>
+         </HBox>
+         <ListView fx:id="tasksListView" VBox.vgrow="ALWAYS" />
       </VBox>
    </center>
 </BorderPane>

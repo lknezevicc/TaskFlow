@@ -4,7 +4,8 @@ public enum PlistProperty {
     LANGUAGE("language"),
     ACCESS_TOKEN("accessToken"),
     REFRESH_TOKEN("refreshToken"),
-    VERSION("appVersion");
+    VERSION("appVersion"),
+    THEME("theme");
 
     private final String key;
 

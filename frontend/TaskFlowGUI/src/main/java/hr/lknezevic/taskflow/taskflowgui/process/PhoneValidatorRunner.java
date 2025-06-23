@@ -6,7 +6,13 @@ import java.io.InputStreamReader;
 
 public class PhoneValidatorRunner {
     public boolean run(String phoneNumber, String phonePrefix) {
-        ProcessBuilder processBuilder = new ProcessBuilder("java", "PhoneValidator",  phoneNumber, phonePrefix);
+        ProcessBuilder processBuilder = new ProcessBuilder(
+                "java",
+                "-cp", "target/classes",
+                "hr.lknezevic.taskflow.taskflowgui.process.PhoneValidator",
+                phoneNumber,
+                phonePrefix
+        );
         processBuilder.redirectErrorStream(true);
 
         try {

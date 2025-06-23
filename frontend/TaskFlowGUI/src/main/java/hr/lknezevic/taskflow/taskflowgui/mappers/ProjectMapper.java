@@ -16,7 +16,11 @@ public interface ProjectMapper {
         ProjectFx fx = new ProjectFx();
         fx.setId(dto.id());
         fx.setTitle(dto.title());
-        fx.setTasks(tasks); // mora doći izvana, npr. iz servisa
+        fx.setDescription(dto.description());
+        fx.setPriority(dto.priority());
+        fx.setCreatedAt(dto.createdAt());
+        fx.setDeadline(dto.deadline());
+        fx.setTasks(tasks);
         return fx;
     }
 
@@ -30,6 +34,10 @@ public interface ProjectMapper {
         return new ProjectDto(
                 fx.getId(),
                 fx.getTitle(),
+                fx.getDescription(),
+                fx.getPriority(),
+                fx.getCreatedAt(),
+                fx.getDeadline(),
                 taskIds
         );
     }

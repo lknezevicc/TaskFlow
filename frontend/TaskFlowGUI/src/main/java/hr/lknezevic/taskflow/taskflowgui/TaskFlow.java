@@ -31,7 +31,7 @@ public class TaskFlow extends Application {
         // SceneManager je singleton, ali sada se injecta pa static setuje sam sebe
         SceneManager sceneManager = injector.getInstance(SceneManager.class);
         sceneManager.init(stage);
-        SceneManager.switchScene(SceneType.TASK_DETAIL);
+        SceneManager.switchScene(SceneType.PROJECTS);
 
         soap.countryinfo.CountryInfoServiceSoapType soap = new CountryInfoService().getCountryInfoServiceSoap();
         String code = soap.countryIntPhoneCode("HR");

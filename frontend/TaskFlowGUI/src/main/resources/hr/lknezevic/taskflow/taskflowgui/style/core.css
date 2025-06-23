@@ -1,0 +1,214 @@
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* BorderPane kao glavni layout */
+.main-container {
+    -fx-background-color: -bg-main;
+}
+
+/* Sidebar */
+#sidebar {
+    -fx-background-color: -bg-sidebar;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+/* Center container - VBox u centru BorderPane */
+.center-container {
+    -fx-background-color: -bg-center;
+    -fx-border-color: -border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-spacing: 20;
+}
+
+/* Naslovi */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -accent;
+}
+
+/* Inputi */
+.text-field,
+.password-field,
+.combo-box {
+    -fx-pref-height: 36;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-color: -border;
+    -fx-border-width: 1;
+    -fx-padding: 0 10 0 10;
+    -fx-background-color: -bg-input;
+    -fx-text-fill: -text-primary;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: -text-primary;
+    -fx-background-color: transparent;
+}
+
+/* Stil za padajući meni (popup lista) */
+.combo-box .combo-box-popup .list-view {
+    -fx-background-color: -bg-input;
+}
+
+.combo-box .combo-box-popup .list-cell {
+    -fx-text-fill: -text-primary;
+    -fx-background-color: -bg-input;
+}
+
+.combo-box .combo-box-popup .list-cell:hover {
+    -fx-background-color: derive(-accent, 20%);
+}
+
+.combo-box .combo-box-popup .list-cell:selected {
+    -fx-background-color: -accent;
+    -fx-text-fill: -text-primary;
+}
+
+.text-field:focused,
+.password-field:focused,
+.combo-box:focused {
+    -fx-border-color: -accent;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 6, 0.0, 0, 2);
+}
+
+Button {
+    -fx-pointer: hand;
+}
+
+/* Dugmad */
+.primary-button {
+    -fx-background-color: -accent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+}
+
+.primary-button:hover {
+    -fx-background-color: -accent-hover;
+}
+
+.primary-button:pressed {
+    -fx-background-color: -accent-pressed;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 12px;
+    -fx-font-weight: normal;
+    -fx-border-color: -border;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 12;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+}
+
+.secondary-button:pressed {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+Label {
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+
+/* KORISNIČKI PODACI */
+#sidebar Label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #f0f4ff;
+    -fx-opacity: 0.9;
+}
+
+#sidebar ImageView {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 0.3, 0, 3);
+    -fx-background-radius: 50%;
+}
+
+/* GUMBI UNUTAR SIDEBARA */
+#navigationContainer .button,
+#preferencesContainer .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-pref-width: 180;
+    -fx-opacity: 0.85;
+    -fx-transition: all 0.2s ease;
+}
+
+#navigationContainer .button:hover,
+#preferencesContainer .button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-opacity: 1;
+}
+
+.check-box {
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 14px;
+}
+
+.check-box .box {
+    -fx-background-color: -bg-input;
+    -fx-border-color: -border;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-border-width: 1;
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
+}
+
+.check-box:hover .box {
+    -fx-border-color: -accent-hover;
+}
+
+.check-box:selected .box {
+    -fx-background-color: -accent;
+    -fx-border-color: -accent;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.progress-bar {
+    -fx-accent: -accent;
+    -fx-control-inner-background: -text-primary;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 2;
+    -fx-pref-height: 20;
+}
+
+.progress-bar .track {
+    -fx-background-color: -text-primary;
+    -fx-background-radius: 6;
+}
+
+.progress-bar .bar {
+    -fx-background-color: -accent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 6;
+}
+
+

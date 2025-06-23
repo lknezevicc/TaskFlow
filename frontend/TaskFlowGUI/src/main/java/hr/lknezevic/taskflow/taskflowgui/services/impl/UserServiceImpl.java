@@ -27,4 +27,14 @@ public class UserServiceImpl extends BaseService implements UserService {
     public CompletableFuture<UserDto> getCurrentUser() {
         return get("http://localhost:3000/current-user", UserDto.class);
     }
+
+    @Override
+    public CompletableFuture<UserDto> saveUser(UserDto userDto) {
+        return post("http://localhost:3000/users", userDto, UserDto.class);
+    }
+
+    @Override
+    public CompletableFuture<UserDto> updateUser(UserDto userDto) {
+        return put("http://localhost:3000/users", userDto, UserDto.class);
+    }
 }

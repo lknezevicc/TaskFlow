@@ -27,7 +27,7 @@ public class LogInController extends BaseController {
     }
 
     public void onLogInButtonClick() {
-        if (isEmpty(usernameField.getText(), passwordField.getText())) {
+        if (isEmpty(usernameField, passwordField)) {
             alertFactory.createWarningAlert(
                     "Username/password are empty",
                     "Please enter a valid username/password"

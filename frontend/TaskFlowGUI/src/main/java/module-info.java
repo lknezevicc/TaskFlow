@@ -14,6 +14,7 @@ module hr.lknezevic.taskflow.taskflowgui {
     requires com.fasterxml.jackson.datatype.jsr310;
     requires jakarta.xml.ws;
     requires jakarta.inject;
+    requires com.sun.tools.xjc;
 
     opens hr.lknezevic.taskflow.taskflowgui to javafx.fxml, com.google.guice;
     opens hr.lknezevic.taskflow.taskflowgui.controllers to javafx.fxml;

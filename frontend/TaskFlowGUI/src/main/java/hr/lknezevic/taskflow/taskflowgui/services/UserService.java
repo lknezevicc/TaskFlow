@@ -8,4 +8,6 @@ import java.util.concurrent.CompletableFuture;
 public interface UserService {
     CompletableFuture<List<UserDto>> getUsers();
     CompletableFuture<UserDto> getCurrentUser();
+    CompletableFuture<UserDto> saveUser(UserDto userDto);
+    CompletableFuture<UserDto> updateUser(UserDto userDto);
 }

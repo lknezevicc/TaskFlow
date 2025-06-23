@@ -1,13 +1,16 @@
 package hr.lknezevic.taskflow.taskflowgui.viewmodel;
 
 import com.google.inject.Inject;
+import hr.lknezevic.taskflow.taskflowgui.dto.UserDto;
 import hr.lknezevic.taskflow.taskflowgui.mappers.UserMapper;
 import hr.lknezevic.taskflow.taskflowgui.observable.UserFx;
 import hr.lknezevic.taskflow.taskflowgui.services.UserService;
+import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class UserViewModel {
@@ -15,7 +18,8 @@ public class UserViewModel {
     private final UserMapper userMapper;
 
     private final ObservableList<UserFx> users = FXCollections.observableArrayList();
-    private UserFx currentUser;
+    private final ObjectProperty<UserFx> currentUser = new SimpleObjectProperty<>();
+    private final ObjectProperty<UserFx> savedUser = new SimpleObjectProperty<>();
 
     @Inject
     public UserViewModel(UserService userService, UserMapper userMapper) {
@@ -23,24 +27,39 @@ public class UserViewModel {
         this.userMapper = userMapper;
     }
 
-    public void loadUsers(Consumer<List<UserFx>> consumer) {
-        userService.getUsers().thenAccept(usersDto -> {
-            users.clear();
-            List<UserFx> usersFx = userMapper.toFxList(usersDto);
-            users.addAll(usersFx);
-            consumer.accept(users);
-        });
+    public void loadUsers() {
     }
 
-    public void loadCurrentUser(Consumer<UserFx> consumer) {
-        userService.getCurrentUser().thenAccept(user -> {
-            UserFx userFx = userMapper.toFx(user);
-            currentUser = userFx;
-            consumer.accept(userFx);
-        });
+    public void loadCurrentUser() {
+        userService.getCurrentUser().thenAccept(user ->
+                Platform.runLater(() -> currentUser.set(userMapper.toFx(user))));
     }
 
-    public UserFx getCurrentUser() {
+    public ObjectProperty<UserFx> currentUserProperty() {
         return currentUser;
+    }
+
+    public ObjectProperty<UserFx> savedUserProperty() {
+        return savedUser;
+    }
+
+    public void saveUser(UserFx fx) {
+        UserDto userToSave = userMapper.toDto(fx);
+
+        userService.saveUser(userToSave).thenAccept(response -> {
+            if (response != null) {
+                UserFx userFx = userMapper.toFx(response);
+                Platform.runLater(() -> {
+                    users.add(userFx);
+                    savedUser.set(userFx);
+                });
+            } else {
+                Platform.runLater(() -> savedUser.set(null));
+            }
+        });
+    }
+
+    public void updateUser(Consumer<UserFx> consumer) {
+
     }
 }

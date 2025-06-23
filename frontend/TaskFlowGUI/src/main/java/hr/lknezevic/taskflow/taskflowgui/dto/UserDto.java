@@ -5,5 +5,11 @@ public record UserDto(
         String firstName,
         String lastName,
         String email,
-        String username
+        String country,
+        String phoneNumber,
+        String username,
+        String password,
+        String role,
+        String department,
+        byte[] profileImage
 ) {}

@@ -46,9 +46,22 @@ public class PlistUtil {
         }
     }
 
+    public void resetToDefault() {
+        try {
+            NSDictionary root = (NSDictionary) PropertyListParser.parse(plistFile);
+            root.put(PlistProperty.LANGUAGE.getKey(), "en");
+            root.put(PlistProperty.THEME.getKey(), "light");
+            root.put(PlistProperty.VERSION.getKey(),  "1.0.0");
+            XMLPropertyListWriter.write(root, plistFile);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create plist", e);
+        }
+    }
+
     private NSDictionary getDefaultPlist() {
         NSDictionary root = new NSDictionary();
         root.put(PlistProperty.LANGUAGE.getKey(), "en");
+        root.put(PlistProperty.THEME.getKey(), "light");
         root.put(PlistProperty.ACCESS_TOKEN.getKey(), "");
         root.put(PlistProperty.VERSION.getKey(), "1.0.0");
         return root;

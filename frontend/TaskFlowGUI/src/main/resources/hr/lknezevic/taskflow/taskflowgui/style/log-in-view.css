@@ -1,18 +1,15 @@
-/* Glavna pozadina – čista bijela */
 .root {
     -fx-background-color: white;
-    -fx-font-family: "Arial", sans-serif;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
-/* Naslovi i tekst */
 .label {
-    -fx-text-fill: #2c3e50; /* Tamnoplava boja teksta */
+    -fx-text-fill: #333333;
     -fx-font-size: 14px;
 }
 
-/* Dugmad – Plavi akcent */
 .button {
-    -fx-background-color: #3498db; /* Plava boja */
+    -fx-background-color: #2a6bbf;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-border-radius: 5px;
@@ -21,18 +18,17 @@
 }
 
 .button:hover {
-    -fx-background-color: #2980b9; /* Tamnija plava na hover */
+    -fx-background-color: #1e5aa7;
 }
 
-/* Tekstualna polja – Samo donja crta plava */
 .text-field {
     -fx-background-color: white;
-    -fx-border-color: transparent transparent #3498db transparent;
-    -fx-border-width: 0px 0px 2px 0px; /* Samo donja crta */
+    -fx-border-color: transparent transparent #2a6bbf transparent;
+    -fx-border-width: 0px 0px 2px 0px;
     -fx-padding: 5px;
     -fx-font-size: 14px;
 }
 
 .text-field:focused {
-    -fx-border-color: transparent transparent #2980b9 transparent; /* Tamnija plava kada je fokusirano */
+    -fx-border-color: transparent transparent #1e5aa7 transparent;
 }

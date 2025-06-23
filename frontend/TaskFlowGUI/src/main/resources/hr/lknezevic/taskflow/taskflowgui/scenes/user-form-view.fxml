@@ -1,53 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
 <?import java.lang.String?>
-<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.UserFormController">
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" styleClass="main-container" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.UserFormController">
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5" />
+    </padding>
     <left>
         <fx:include source="sidebar.fxml" />
     </left>
     <center>
-        <GridPane fx:id="userFormGrid" alignment="CENTER" hgap="20" vgap="15">
+        <VBox fx:id="userFormContainer" alignment="CENTER" styleClass="center-container" BorderPane.alignment="CENTER">
 
-            <!-- Labels on the left -->
-            <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-            <TextField fx:id="firstNameField" promptText="Enter first name" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="300.0" styleClass="title-label" text="User Registration Form" textAlignment="CENTER" />
 
-            <Label text="Last Name:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-            <TextField fx:id="lastNameField" promptText="Enter last name" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <GridPane fx:id="userFormGrid" alignment="CENTER" vgap="20.0">
+                <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="firstNameField" promptText="Enter first name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
-            <TextField fx:id="emailField" promptText="Enter email address" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="lastNameField" promptText="Enter last name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label text="Username:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-            <TextField fx:id="usernameField" promptText="Choose a username" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="emailField" promptText="Enter email address" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-            <Label text="Role:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
-            <ComboBox fx:id="roleComboBox" promptText="Select role" GridPane.rowIndex="4" GridPane.columnIndex="1">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Admin"/>
-                        <String fx:value="User"/>
-                        <String fx:value="Guest"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
+                <Label text="Country:" GridPane.rowIndex="3" />
+                <ComboBox fx:id="countryComboBox" prefWidth="150.0" promptText="Select country" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="USA" />
+                            <String fx:value="Canada" />
+                            <String fx:value="UK" />
+                            <String fx:value="Germany" />
+                            <String fx:value="France" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-            <Label text="Profile Picture:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
-            <VBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="5" GridPane.columnIndex="1">
-                <ImageView fx:id="profileImageView" fitHeight="120" fitWidth="120" preserveRatio="true" style="-fx-border-color: #cccccc; -fx-border-radius: 10;" />
-                <Button fx:id="uploadImageButton" text="Choose Image" />
-            </VBox>
+                <Label text="Phone Number:" GridPane.rowIndex="4" />
+                <TextField fx:id="phoneNumberField" promptText="Enter phone number" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-            <!-- Submit Button -->
-            <Button fx:id="submitButton" text="Save User"
-                    GridPane.columnSpan="2" GridPane.rowIndex="6"
-                    maxWidth="200"
-                    alignment="CENTER"
-                    styleClass="primary-button" />
-        </GridPane>
+                <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <TextField fx:id="usernameField" promptText="Choose a username" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                <Label text="Password:" GridPane.rowIndex="6" />
+                <PasswordField fx:id="passwordField" promptText="Enter password" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                <ComboBox fx:id="roleComboBox" promptText="Select role" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Admin" />
+                            <String fx:value="User" />
+                            <String fx:value="Guest" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Department:" GridPane.rowIndex="8" />
+                <ComboBox fx:id="departmentComboBox" promptText="Select department" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="HR" />
+                            <String fx:value="IT" />
+                            <String fx:value="Finance" />
+                            <String fx:value="Marketing" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label text="Profile Picture:" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                    <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" />
+                    <Button fx:id="uploadImageButton" styleClass="secondary-button" text="Choose Image" />
+                </VBox>
+
+                <Button fx:id="submitButton" alignment="CENTER" maxWidth="200" styleClass="primary-button" text="Save User" GridPane.columnSpan="2" GridPane.rowIndex="10">
+                    <GridPane.margin>
+                      <Insets top="50.0" />
+                    </GridPane.margin>
+                </Button>
+
+                <columnConstraints>
+                   <ColumnConstraints halignment="CENTER" prefWidth="200.0" />
+                   <ColumnConstraints halignment="CENTER" prefWidth="400.0" />
+                </columnConstraints>
+                <rowConstraints>
+                   <RowConstraints />
+                   <RowConstraints />
+                   <RowConstraints />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                   <RowConstraints />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                   <RowConstraints />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                   <RowConstraints />
+                   <RowConstraints />
+                </rowConstraints>
+                <VBox.margin>
+                   <Insets top="100.0" />
+                </VBox.margin>
+            </GridPane>
+        </VBox>
     </center>
 </BorderPane>

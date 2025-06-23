@@ -1,0 +1,11 @@
+.root {
+    -bg-main: #f9f9f9;
+    -bg-sidebar: linear-gradient(to bottom, #1e3a8a, #3b82f6);
+    -bg-center: #ffffff;
+    -bg-input: #fefefe;
+    -border: #cccccc;
+    -text-primary: #333333;
+    -accent: #2a6bbf;
+    -accent-hover: #1e5aa7;
+    -accent-pressed: #174a8d;
+}

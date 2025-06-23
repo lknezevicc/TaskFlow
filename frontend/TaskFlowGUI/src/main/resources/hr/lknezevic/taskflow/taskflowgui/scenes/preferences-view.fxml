@@ -1,65 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.lang.String?>
-<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.AdministrationController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" styleClass="main-container" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.PreferencesController">
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5" />
+    </padding>
     <left>
         <fx:include source="sidebar.fxml" />
     </left>
     <center>
-        <VBox spacing="20" styleClass="preferences-container">
+        <VBox fx:id="preferences" alignment="CENTER" spacing="20" styleClass="center-container" BorderPane.alignment="CENTER">
 
-            <Label text="Preferences" styleClass="title-label" />
+            <Label prefHeight="40.0" prefWidth="300.0" styleClass="title-label" text="Preferences" userData="preferences.title">
+                <VBox.margin>
+                   <Insets top="40.0" />
+                </VBox.margin>
+            </Label>
 
-            <!-- Language Selection -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Language:" minWidth="120" />
-                <ComboBox fx:id="languageComboBox" prefWidth="200">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Hrvatski" />
-                            <String fx:value="English" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </HBox>
+            <Region VBox.vgrow="SOMETIMES" />
+            <GridPane fx:id="preferencesGrid" alignment="TOP_CENTER" hgap="30" vgap="15">
 
-            <!-- Theme Selection -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Theme:" minWidth="120" />
-                <ToggleButton fx:id="themeToggleGroup">
-                    <RadioButton text="Light" />
-                    <RadioButton text="Dark" />
-                </ToggleButton>
-            </HBox>
+                <Label minWidth="120" text="Language:" userData="preferences.language" GridPane.columnIndex="0" GridPane.halignment="CENTER" />
+                <ComboBox fx:id="languageComboBox" prefWidth="200" GridPane.columnIndex="1" />
 
-            <!-- Auto-switch Light/Dark mode -->
-            <CheckBox fx:id="autoSwitchCheckbox" text="Auto switch Light/Dark mode based on system time" />
+                <Label minWidth="120" text="Theme:" userData="preferences.theme" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="themeComboBox" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <!-- Check for updates -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Application Version:" minWidth="120" />
-                <Label fx:id="versionLabel" text="v1.0.0" />
-                <Button fx:id="checkUpdateButton" text="Check for updates" />
-            </HBox>
+                <CheckBox fx:id="autoSwitchCheckbox" text="Auto switch Light/Dark mode based on system time" userData="preferences.autoSwitch" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
 
-            <!-- Optional additional settings -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Font Size:" minWidth="120" />
-                <Slider fx:id="fontSizeSlider" min="10" max="24" value="14" prefWidth="200" />
-            </HBox>
+                <Label minWidth="120" text="Application Version:" userData="preferences.version" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <Label fx:id="versionLabel" text="v1.0.0" />
+                    <Button fx:id="checkUpdateButton" styleClass="secondary-button" text="Check for updates" userData="preferences.checkUpdates" />
+                </HBox>
+                <ProgressBar fx:id="downloadProgressBar" prefWidth="200.0" progress="0.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                   <GridPane.margin>
+                      <Insets right="20.0" />
+                   </GridPane.margin>
+                </ProgressBar>
+                <Label fx:id="downloadProgressLabel" text="100%" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-            <!-- Reset Button -->
-            <Button fx:id="resetPreferencesButton" text="Reset to Defaults" maxWidth="150" />
+                <Button fx:id="resetPreferencesButton" styleClass="primary-button" text="Reset to Defaults" userData="preferences.reset" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
 
-            <!-- Spacer -->
-            <Region VBox.vgrow="ALWAYS" />
+                <columnConstraints>
+                   <ColumnConstraints halignment="CENTER" prefWidth="200.0" />
+                   <ColumnConstraints halignment="CENTER" prefWidth="300.0" />
+                </columnConstraints>
+                <rowConstraints>
+                   <RowConstraints valignment="CENTER" />
+                   <RowConstraints valignment="CENTER" />
+                   <RowConstraints valignment="CENTER" />
+                   <RowConstraints valignment="CENTER" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" />
+                   <RowConstraints maxHeight="40.0" minHeight="100.0" prefHeight="40.0" valignment="CENTER" />
+                   <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                </rowConstraints>
+            </GridPane>
 
-            <!-- Legal note -->
-            <Label text="© 2025 TaskFlow. All rights reserved." styleClass="legal-note" maxWidth="Infinity" alignment="CENTER" />
+            <Region VBox.vgrow="SOMETIMES" />
+
+            <Label maxWidth="Infinity" styleClass="legal-note" text="© 2025 TaskFlow. All rights reserved." userData="preferences.copyright" />
         </VBox>
     </center>
 </BorderPane>
-

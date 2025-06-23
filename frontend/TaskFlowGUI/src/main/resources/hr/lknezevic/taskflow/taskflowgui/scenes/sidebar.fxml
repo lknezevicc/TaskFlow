@@ -6,33 +6,31 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="768.0" prefWidth="200.0" stylesheets="" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.SidebarController">
-    <!-- User Info Section -->
-    <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #3498db; -fx-padding: 20px;">
-        <ImageView fx:id="userImage" fitHeight="86.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+<VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="250.0" stylesheets="" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.lknezevic.taskflow.taskflowgui.controllers.SidebarController">
+    <padding>
+        <Insets right="10" />
+    </padding>
+
+    <VBox fx:id="userContainer" alignment="CENTER" spacing="10.0">
+        <ImageView fx:id="userImage" fitHeight="220.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
         </ImageView>
-        <Label fx:id="fullName" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="John Doe" />
-        <Label fx:id="email" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Email" />
-        <Label fx:id="userName11" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Department" />
+        <Label fx:id="fullName" text="John Doe" userData="sidebar.fullName" />
+        <Label fx:id="email" text="Email" userData="sidebar.email" />
+        <Label fx:id="department" text="Department" userData="sidebar.department" />
     </VBox>
 
-       <!-- Navigation Buttons -->
-    <VBox fx:id="navigation" alignment="CENTER" prefHeight="478.0" prefWidth="220.0" spacing="10.0" style="-fx-padding: 20px;">
-        <Button mnemonicParsing="false" styleClass="button" text="Dashboard" />
-        <Button mnemonicParsing="false" styleClass="button" text="Tasks" />
-        <Button mnemonicParsing="false" styleClass="button" text="Projects" />
-        <Button mnemonicParsing="false" styleClass="button" text="Administrative" />
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
+    <VBox fx:id="navigationContainer" alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
+        <Button fx:id="dashboard" mnemonicParsing="false" styleClass="button" text="Dashboard" userData="sidebar.dashboard" />
+        <Button fx:id="tasks" mnemonicParsing="false" styleClass="button" text="Tasks" userData="sidebar.tasks" />
+        <Button fx:id="projects" mnemonicParsing="false" styleClass="button" text="Projects" userData="sidebar.projects" />
+        <Button fx:id="administrations" mnemonicParsing="false" styleClass="button" text="Administrative" userData="sidebar.administrative" />
     </VBox>
 
-    <!-- Preferences and Logout Section -->
-    <VBox alignment="CENTER" prefWidth="220.0" spacing="10.0" style="-fx-padding: 20px;">
-        <Button mnemonicParsing="false" styleClass="button" text="Preferences" />
-        <Button mnemonicParsing="false" styleClass="button" text="Logout" />
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
+    <VBox fx:id="preferencesContainer" alignment="CENTER" spacing="10.0">
+        <Button fx:id="preferences" mnemonicParsing="false" styleClass="button" text="Preferences" userData="sidebar.preferences" />
+        <Button fx:id="logout" mnemonicParsing="false" styleClass="button" text="Logout" userData="sidebar.logout" />
+      <padding>
+          <Insets bottom="20" />
+      </padding>
     </VBox>
 </VBox>

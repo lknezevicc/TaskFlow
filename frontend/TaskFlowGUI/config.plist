@@ -4,6 +4,8 @@
 <dict>
 	<key>language</key>
 	<string>en</string>
+	<key>theme</key>
+	<string>light</string>
 	<key>jwtToken</key>
 	<string></string>
 	<key>appVersion</key>
